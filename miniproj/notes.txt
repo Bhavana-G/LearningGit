@@ -1,0 +1,84 @@
+Steps:
+
+1. ctrl + ` to open terminal
+2. virtual environment:
+	pip3 install virtualenv
+	virtualenv env
+	Start-Process powershell -Verb runAs
+	.\env\Scripts\activate.ps1
+	we get (env) in starting -> virtual environment successfully started
+	 Set-ExecutionPolicy RemoteSigned to be executed to run scripts
+3. pip3 install flask flask-sqlalchemy
+4. python -m flask run to run application(-m is short for module)
+5. to create db from python code:
+	open python shell in (env) using python command
+	from app import db - import db object into interactive python shell
+	db.create_all() - creates db which we can see in folder structure
+	exit() - exit interactive python shell
+
+SQLite commands:
+	sqlite3 - to enter command line shell
+	create database - sqlite3 test.db
+	.databases - to check list of DB in that folder
+	create table - create table students(id int primary key);
+	.tables - listing out all tables inside the database
+	.schema students - to check schema of a table
+	.quit - to exit the command line shell
+	
+Version Control - Git commands:
+
+git version
+ls - list all files in that folder
+cd - use tab for autocompleting file names
+git init - initialize git repository for a new or existing project
+git status - lists files we have changed and those which u still need to add or commit
+git add <file_name> - moves files from local(called as working directory) to staging area
+	files are stored in local -> staging area -> commit(creates a checkpoint)
+	make changes move to staging area and when we feel like now we should create a 
+	checkpoint then we commit and if we make any further changes and want to undo 
+	we can again be live from the checkpoint just like in games
+	git add . - adds all untracked files to staging area
+clear - clears the console
+git commit - commit tracked files to head branch in local repository
+	-m to add a msg about ur change: git commit -m "commit message"
+	first commit msg is usually initial commit
+	-am to both stage and commit the file at the same time
+git log - lists all our commits
+git rm --cached <filename> - remove files from staging area(unstage) back to local
+git branch <branch_name> - create a new branch from current branch
+git checkout <branch_name> - to switch from current branch to another(git branch 
+	only creates new branch to start using that branch we need to use git checkout)
+git merge <branch_name> - merge a current branch to the mentioned branch_name
+	on local repo this command can be directly given
+	on remote repo pull request is to be created to merge current remote branch to another remote branch
+	When you open a pull request, you’re proposing your changes and requesting that someone 
+	review and pull in your contribution and merge them into their branch
+git remote add <origin_name> <Git repository link> - add remote repo to ur project 
+	so that we can store that project online on a remote server
+git remote -v - to check how many remote repositories we have
+	git remote show origin - can also be used - similar purpose
+git push - to push to remote repository
+	git push -u <origin_name> <current_branch_name> - alternatively we can use this
+	git branch --set-upstream-to <origin/remote-branch> - sets the default remote branch 
+	for the current local branch. Any future git pull command (with the current local 
+	branch checked-out), will attempt to bring in commits from the <remote-branch> into 
+	the current local branch. One way to avoid having to explicitly type --set-upstream 
+	is to use its shorthand flag -u as follows:
+	git push -u origin local-branch - This sets the upstream association for any 
+	future push/pull attempts automatically.
+git pull - to pull from remote repository
+	local to remote - push
+	remote to local - pull
+.gitignore - list of files we want Git to ignore
+rm -rf .git - delete local Git repository
+ls -lah (or) ls -la - Then from the same ex-repository folder, to see if hidden folder .git is still there
+
+Git Workflow:
+
+Working Directory - Staging Area - Local repo(HEAD) - Remote repo(MASTER)
+	git add			git commit			git push
+------------------> -------------> -------------------------->
+				git merge				git fetch
+<--------------------------------- <--------------------------
+						git pull
+<-------------------------------------------------------------
