@@ -72,6 +72,8 @@ git pull - to pull from remote repository
 .gitignore - list of files we want Git to ignore
 rm -rf .git - delete local Git repository
 ls -lah (or) ls -la - Then from the same ex-repository folder, to see if hidden folder .git is still there
+git remote set-url --add --push origin <repo_link> - to set multiple remote repositories for push
+	You can't pull from multiple remotes at once
 
 Git Workflow:
 
