@@ -72,8 +72,12 @@ git pull - to pull from remote repository
 .gitignore - list of files we want Git to ignore
 rm -rf .git - delete local Git repository
 ls -lah (or) ls -la - Then from the same ex-repository folder, to see if hidden folder .git is still there
-git remote set-url --add --push origin <repo_link> - to set multiple remote repositories for push
+git remote set-url --add --push origin git@github.com:muccg/my-project.git - to set multiple remote repositories for push
 	You can't pull from multiple remotes at once
+git remote rm <origin_name> - remove a remote repository. It does not delete the remote repository 
+	from the server. It simply removes the remote and its references from your local repository.
+git config --global user.email "you@example.com"
+git config --global user.name "Your Name"
 
 Git Workflow:
 
